@@ -1,0 +1,40 @@
+.field
+  display: flex
+  width: 100%
+  min-height: calc(100vh - 60px)
+  flex-wrap: wrap
+  perspective: 800px
+  justify-content: center
+  align-items: center
+.card
+  height: calc(80px * 2)
+  width: calc(60px * 2)
+  margin: 5px
+  transform-style: preserve-3d
+  transition: transform 1s
+  position: relative
+  &_closed
+    transform: rotateY( 180deg )
+  &__side
+    position: absolute
+    top: 0
+    left: 0
+    border: 1px solid black
+    width: 100%
+    height: 100%
+    object-fit: contain
+    backface-visibility: hidden
+    &_back
+      transform: rotateY( 180deg )
+.btn
+  padding: 10px 15px
+  margin-left: 5px
+  margin-bottom: 2.5px
+  border: 0
+  border-radius: 3px
+  &_start
+    background-color: lightgreen
+  &_end
+    background-color: lightcoral
+  &_shuffle
+    background-color: lightblue
