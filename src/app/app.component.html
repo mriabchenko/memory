@@ -9,9 +9,9 @@
             [class.card_closed]="!card.isOpened"
             *ngFor="let card of cards"
             (click)="cardClicked(card.id)">
-        <ng-container *ngIf="!card.solved">
-            <img class="card__side card__side_front" [src]="card.image" [alt]="card.id">
-            <img class="card__side card__side_back" src="assets/images/card__back.jpg" alt="Рубашка карты">
-        </ng-container>
+        <img class="card__side card__side_front" [class.card__side_solved]="card.solved" [src]="card.image"
+             [alt]="card.id">
+        <img class="card__side card__side_back" [class.card__side_solved]="card.solved"
+             src="assets/images/card__back.jpg" alt="Рубашка карты">
     </div>
 </div>

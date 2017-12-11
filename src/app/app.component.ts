@@ -13,7 +13,6 @@ export class AppComponent {
     public cards: CardInterface[];
 
     public constructor() {
-        this.cards = new Array(this.CARDS_NUMBER);
         this.init();
         this.shuffle();
     }
@@ -31,6 +30,7 @@ export class AppComponent {
     }
 
     public init() {
+        this.cards = new Array(this.CARDS_NUMBER);
         // setting ids
         for (let i = 0; i < this.CARDS_NUMBER; i++) {
             this.cards[ i ] = {
@@ -54,6 +54,9 @@ export class AppComponent {
 
     public endGame() {
         this.openAll();
+        setTimeout(function () {
+            this.init()
+        }.bind(this), 1000);
         this.gameIsInProgress = false;
     }
 
