@@ -1,17 +1,31 @@
-<div class="controls">
-    <button class="btn btn_start" (click)="startGame()" *ngIf="!gameIsInProgress">Начать игру</button>
-    <button class="btn btn_shuffle" (click)="shuffle()" *ngIf="!gameIsInProgress">Перемешать</button>
-    <button class="btn btn_end" (click)="endGame()" *ngIf="gameIsInProgress">Закончить игру</button>
-</div>
-<div class="field">
-    <div
-            class="card"
-            [class.card_closed]="!card.isOpened"
-            *ngFor="let card of cards"
-            (click)="cardClicked(card.id)">
-        <img class="card__side card__side_front" [class.card__side_solved]="card.solved" [src]="card.image"
-             [alt]="card.id">
-        <img class="card__side card__side_back" [class.card__side_solved]="card.solved"
-             src="assets/images/card__back.jpg" alt="Рубашка карты">
+<div class="all">
+    <div class="controls">
+        <i class="fa fa-play btn btn_start"
+           aria-hidden="true"
+           (click)="startGame()"
+           *ngIf="!gameIsInProgress">
+        </i>
+        <i class="fa fa-rotate-right btn btn_shuffle"
+           aria-hidden="true"
+           (click)="shuffle()"
+           *ngIf="!gameIsInProgress">
+        </i>
+        <i class="fa fa-stop btn btn_end"
+           aria-hidden="true"
+           (click)="endGame()"
+           *ngIf="gameIsInProgress">
+        </i>
+    </div>
+    <div class="field">
+        <div
+                class="card"
+                [class.card_closed]="!card.isOpened"
+                *ngFor="let card of cards"
+                (click)="cardClicked(card.id)">
+            <img class="card__side card__side_front" [class.card__side_solved]="card.solved" [src]="card.image"
+                 [alt]="card.id">
+            <img class="card__side card__side_back" [class.card__side_solved]="card.solved"
+                 src="assets/images/card__back.jpg" alt="Рубашка карты">
+        </div>
     </div>
 </div>
