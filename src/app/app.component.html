@@ -1,20 +1,13 @@
 <div class="all">
     <div class="controls">
-        <i class="fa fa-play btn btn_start"
+        <i class="fa fa-rotate-right btn btn_restart"
            aria-hidden="true"
-           (click)="startGame()"
-           *ngIf="!gameIsInProgress">
+           (click)="restartGame()">
         </i>
-        <i class="fa fa-rotate-right btn btn_shuffle"
-           aria-hidden="true"
-           (click)="shuffle()"
-           *ngIf="!gameIsInProgress">
-        </i>
-        <i class="fa fa-stop btn btn_end"
-           aria-hidden="true"
-           (click)="endGame()"
-           *ngIf="gameIsInProgress">
-        </i>
+        <span class="btn btn_steps">
+            <i class="fa fa-files-o"></i>
+            {{steps}}
+        </span>
     </div>
     <div class="field">
         <div
