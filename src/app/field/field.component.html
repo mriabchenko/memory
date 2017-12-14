@@ -1,0 +1,22 @@
+<div class="controls">
+  <i class="fa fa-rotate-right btn btn_restart"
+     aria-hidden="true"
+     (click)="restartGame()">
+  </i>
+  <span class="btn btn_steps">
+            <i class="fa fa-files-o"></i>
+            {{steps}}
+        </span>
+</div>
+<div class="field">
+  <div
+          class="card"
+          [class.card_closed]="!card.isOpened"
+          *ngFor="let card of cards"
+          (click)="cardClicked(card.id)">
+    <img class="card__side card__side_front" [class.card__side_solved]="card.solved" [src]="card.image"
+         [alt]="card.id">
+    <img class="card__side card__side_back" [class.card__side_solved]="card.solved"
+         src="assets/images/card__back.jpg" alt="Рубашка карты">
+  </div>
+</div>
