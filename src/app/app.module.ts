@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FieldComponent } from './field/field.component';
+import { StopwatchComponent } from './stopwatch/stopwatch.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FieldComponent
+    FieldComponent,
+    StopwatchComponent
   ],
   imports: [
     BrowserModule
