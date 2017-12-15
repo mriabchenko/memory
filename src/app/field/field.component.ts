@@ -1,6 +1,7 @@
 import { Component }        from '@angular/core';
 import { CardInterface }    from '../../interfaces/card.interface';
 import { StopwatchService } from '../services/stopwatch.service';
+import { WinStatsService }  from '../services/win-stats.service';
 
 @Component({
   selector   : 'app-field',
@@ -15,13 +16,18 @@ export class FieldComponent {
   public time: string;
   public gameInProgress: boolean;
 
-  public constructor(public stopwatch: StopwatchService) {
+  public constructor(
+    public stopwatch: StopwatchService,
+    public ws: WinStatsService
+  ) {
     this.init();
   }
 
   public init() {
+    this.ws.showWinStats = false;
     this.steps = 0;
     this.stopwatch.clear();
+    this.syncStats();
     this.gameInProgress = false;
     this.stopwatch.display.subscribe(time => {
       this.time = time;
@@ -49,6 +55,7 @@ export class FieldComponent {
   }
 
   public cardClicked(id: number) {
+    this.steps++;
     let card: CardInterface;
     if (!this.gameInProgress) {
       this.stopwatch.start();
@@ -93,7 +100,6 @@ export class FieldComponent {
       card.isOpened = false;
       this.openedPair = [];
     }
-    this.steps++;
   }
 
   public shuffle(): void {
@@ -113,16 +119,24 @@ export class FieldComponent {
   private winHandler(): void {
     this.gameInProgress = false;
     this.stopwatch.stop();
-    this.stopwatch.stop();
+    this.syncStats();
     setTimeout(function () {
-      alert(`Вы победили за ${this.steps + 1} ходов. Время: ${this.time}`);
+      this.ws.showWinStats = true;
       this.steps = 0;
       this.openedPair = [];
-    }.bind(this), 2500);
+    }.bind(this), 2000);
 
   }
 
-  private closeAll() {
+  /**
+   * Updating stats in WinStatsService
+   */
+  private syncStats(): void {
+    this.ws.steps = this.steps;
+    this.ws.time = this.time;
+  }
+
+  private closeAll(): void {
     this.cards.forEach(card => card.isOpened = false);
   }
 }
