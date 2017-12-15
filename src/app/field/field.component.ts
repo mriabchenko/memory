@@ -16,14 +16,16 @@ export class FieldComponent {
   public gameInProgress: boolean;
 
   public constructor(public stopwatch: StopwatchService) {
-    this.gameInProgress = false;
-    stopwatch.display.subscribe(time => {
-      this.time = time;
-    });
+    this.init();
   }
 
   public init() {
+    this.steps = 0;
     this.stopwatch.clear();
+    this.gameInProgress = false;
+    this.stopwatch.display.subscribe(time => {
+      this.time = time;
+    });
     this.cards = new Array(this.CARDS_NUMBER);
     // setting ids
     for (let i = 0; i < this.CARDS_NUMBER; i++) {
@@ -43,16 +45,15 @@ export class FieldComponent {
   }
 
   public restartGame() {
-    this.steps = 0;
     this.init();
   }
 
   public cardClicked(id: number) {
-    if (!this.gameInProgress) {
-      this.gameInProgress = true;
-      this.stopwatch.start();
-    }
     let card: CardInterface;
+    if (!this.gameInProgress) {
+      this.stopwatch.start();
+      this.gameInProgress = true;
+    }
     // finding clicked card
     this.cards.forEach(c => {
       if (c.id === id) {
@@ -84,11 +85,8 @@ export class FieldComponent {
             return;
           }
           this.openedPair = [];
-          //this.closeAll()
-        }
-        else {
+        } else {
           this.openedPair = []; // reset pair
-          //this.closeAll()
         }
       }
     } else if (this.cards[ id ].isOpened) {
@@ -100,7 +98,7 @@ export class FieldComponent {
 
   public shuffle(): void {
     this.stopwatch.clear();
-    let a = this.cards;
+    const a = this.cards;
     for (let i = a.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [ a[ i ], a[ j ] ] = [ a[ j ], a[ i ] ];
@@ -117,7 +115,7 @@ export class FieldComponent {
     this.stopwatch.stop();
     this.stopwatch.stop();
     setTimeout(function () {
-      alert(`Вы победили за ${this.steps + 1} ходов`);
+      alert(`Вы победили за ${this.steps + 1} ходов. Время: ${this.time}`);
       this.steps = 0;
       this.openedPair = [];
     }.bind(this), 2500);
