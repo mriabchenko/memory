@@ -1,22 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule }      from '@angular/core';
 
 
-import { AppComponent } from './app.component';
-import { FieldComponent } from './field/field.component';
-import { StopwatchComponent } from './stopwatch/stopwatch.component';
+import { AppComponent }       from './app.component';
+import { FieldComponent }     from './field/field.component';
+import { StopwatchService }   from './services/stopwatch.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FieldComponent,
-    StopwatchComponent
   ],
-  imports: [
-    BrowserModule
+  imports     : [
+    BrowserModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers   : [ StopwatchService ],
+  bootstrap   : [ AppComponent ],
 })
-export class AppModule { }
+export class AppModule {
+}

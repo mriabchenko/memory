@@ -9,8 +9,11 @@
     </span>
     <span class="btn btn_steps">
         <i class="fa fa-clock-o"></i>
-        <app-stopwatch></app-stopwatch>
+        {{time}}
     </span>
+    <button (click)="stopwatch.start()">start</button>
+    <button (click)="stopwatch.stop()">stop</button>
+    <button (click)="stopwatch.clear()">clear</button>
 </div>
 <div class="field">
     <div
