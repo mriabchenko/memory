@@ -9,7 +9,7 @@ export class StopwatchService {
   private interval: any;
 
   public constructor() {
-    this.initialTime = '00:00:00';
+    this.initialTime = '00:00';
     this.time$ = new BehaviorSubject(this.initialTime);
   }
 

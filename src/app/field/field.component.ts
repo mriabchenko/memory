@@ -9,7 +9,7 @@ import { WinStatsService } from '../services/win-stats.service';
     styleUrls  : [ './field.component.sass' ],
 })
 export class FieldComponent {
-    public cardsNumber = 12;
+    public cardsNumber = 2;
     public openedPair  = [];
     public cards: CardInterface[];
     public steps: number;
@@ -29,6 +29,7 @@ export class FieldComponent {
     public init() {
         this.ws.showWinStats = false;
         this.steps           = 0;
+        this.stopwatch.stop();
         this.stopwatch.clear();
         this.syncStats();
         this.gameInProgress = false;
@@ -141,6 +142,7 @@ export class FieldComponent {
     private syncStats(): void {
         this.ws.steps = this.steps;
         this.ws.time  = this.time;
+        this.ws.cardsNumber  = this.cardsNumber;
     }
 
     private closeAll(): void {
