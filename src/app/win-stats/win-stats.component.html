@@ -1,5 +1,5 @@
-<div class="win-stats" [class.active]="showWinStats">
+<div class="win-stats" [class.win-stats_active]="ws.showWinStats">
   <h1 class="win-stats__title">Вы победили!</h1>
-  <p class="win-stats__description">Потраченое время: {{time}}</p>
-  <p class="win-stats__description">Количетво ходов: {{steps}}</p>
+  <p class="win-stats__description">Потраченое время: {{ws.time}}</p>
+  <p class="win-stats__description">Количетво ходов: {{ws.steps}}</p>
 </div>

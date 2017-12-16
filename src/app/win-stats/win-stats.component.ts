@@ -8,13 +8,5 @@ import { WinStatsService }  from '../services/win-stats.service';
 })
 
 export class WinStatsComponent {
-  public time: string;
-  public steps: number;
-  public showWinStats: boolean;
-
-  public constructor(public ws: WinStatsService) {
-    this.time = this.ws.time;
-    this.steps = this.ws.steps;
-    this.showWinStats = this.ws.showWinStats;
-  }
+  public constructor(public ws: WinStatsService) {}
 }
