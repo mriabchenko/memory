@@ -9,8 +9,9 @@ import { WinStatsService } from '../services/win-stats.service';
     styleUrls  : [ './field.component.sass' ],
 })
 export class FieldComponent {
-    public CARDS_NUMBER = 4;
-    public openedPair   = [];
+    //TODO: change it to 12
+    public cardsNumber = 2;
+    public openedPair  = [];
     public cards: CardInterface[];
     public steps: number;
     public time: string;
@@ -35,18 +36,18 @@ export class FieldComponent {
         this.stopwatch.display.subscribe(time => {
             this.time = time;
         });
-        this.cards = new Array(this.CARDS_NUMBER);
+        this.cards = new Array(this.cardsNumber);
         // setting ids
-        for (let i = 0; i < this.CARDS_NUMBER; i++) {
+        for (let i = 0; i < this.cardsNumber; i++) {
             this.cards[ i ] = {
                 id      : i,
-                pairId  : (i < this.CARDS_NUMBER / 2) ? i + this.CARDS_NUMBER / 2 : i - this.CARDS_NUMBER / 2,
+                pairId  : (i < this.cardsNumber / 2) ? i + this.cardsNumber / 2 : i - this.cardsNumber / 2,
                 isOpened: false,
                 solved  : false,
             };
         }
         // setting images
-        for (let i = 0; i < this.CARDS_NUMBER / 2; i++) {
+        for (let i = 0; i < this.cardsNumber / 2; i++) {
             this.cards[ i ].image                      = `assets/images/${i + 1}.jpg`;
             this.cards[ this.cards[ i ].pairId ].image = `assets/images/${i + 1}.jpg`;
         }
@@ -54,6 +55,11 @@ export class FieldComponent {
     }
 
     public restartGame() {
+        this.init();
+    }
+
+    public cardsNumberSelected(newCardsNumber: number): void {
+        this.cardsNumber = newCardsNumber;
         this.init();
     }
 

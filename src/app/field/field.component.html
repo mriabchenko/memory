@@ -13,7 +13,7 @@
     </span>
     <span class="btn btn_yellow">
         <i class="fa fa-image"></i>
-        <select>
+        <select (change)="cardsNumberSelected($event.target.value)">
             <option value="12">12</option>
             <option value="22">22</option>
             <option value="32">32</option>
