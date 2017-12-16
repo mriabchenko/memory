@@ -21,6 +21,9 @@ export class FieldComponent {
         public ws: WinStatsService
     ) {
         this.init();
+        this.ws.restartGame$.subscribe(()=>{
+            this.restartGame();
+        })
     }
 
     public init() {
