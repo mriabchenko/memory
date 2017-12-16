@@ -9,8 +9,7 @@ import { WinStatsService } from '../services/win-stats.service';
     styleUrls  : [ './field.component.sass' ],
 })
 export class FieldComponent {
-    //TODO: change it to 12
-    public cardsNumber = 2;
+    public cardsNumber = 12;
     public openedPair  = [];
     public cards: CardInterface[];
     public steps: number;
@@ -132,7 +131,6 @@ export class FieldComponent {
         setTimeout(function () {
             this.ws.showWinStats = true;
             this.openedPair      = [];
-            console.log(this.ws);
         }.bind(this), 2000);
 
     }
