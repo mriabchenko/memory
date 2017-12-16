@@ -1,5 +1,14 @@
 <div class="win-stats" [class.win-stats_active]="ws.showWinStats">
-  <h1 class="win-stats__title">Вы победили!</h1>
-  <p class="win-stats__description">Потраченое время: {{ws.time}}</p>
-  <p class="win-stats__description">Количетво ходов: {{ws.steps}}</p>
+  <p class="win-stats__title">
+    <i class="fa fa-smile-o"></i>
+    <i class="fa fa-thumbs-o-up"></i>
+  </p>
+  <p class="win-stats__description"><i class="fa fa-clock-o"></i> {{ws.time}}</p>
+  <p class="win-stats__description"><i class="fa fa-files-o"></i> {{ws.steps}}</p>
+  <p>
+    <i class="fa fa-rotate-right btn btn_blue"
+       aria-hidden="true"
+       (click)="restartGame()">
+    </i>
+  </p>
 </div>

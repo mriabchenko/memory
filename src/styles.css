@@ -4,3 +4,19 @@
 body {
     margin: 0;
 }
+
+.btn {
+    padding: 10px 15px;
+    margin-left: 5px;
+    margin-bottom: 2.5px;
+    border: 0;
+    border-radius: 3px;
+}
+
+.btn_blue {
+    background-color: lightblue;
+}
+
+.btn_yellow {
+    background-color: lightyellow;
+}

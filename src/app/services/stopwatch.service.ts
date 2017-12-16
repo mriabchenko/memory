@@ -25,12 +25,12 @@ export class StopwatchService {
   public start() {
     let time = 1;
     this.interval = setInterval(() => {
-      const h = Math.floor(time / (60 * 60));
-      time = time % (60 * 60);
+      // const h = Math.floor(time / (60 * 60));
+      // time = time % (60 * 60);
       const m = Math.floor(time / 60);
       time = time % (60);
       const s = Math.floor(time);
-      const formatedTime = this.pad(h, 2) + ':' + this.pad(m, 2) + ':' + this.pad(s, 2);
+      const formatedTime = this.pad(m, 2) + ':' + this.pad(s, 2);
       this.time$.next(formatedTime);
       time++;
     }, 1000);
