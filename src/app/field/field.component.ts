@@ -9,7 +9,7 @@ import {WinStatsService} from '../services/win-stats.service';
   styleUrls: ['./field.component.sass'],
 })
 export class FieldComponent {
-  public cardsNumber = 12;
+  public cardsNumber = 4;
   public openedPair = [];
   public cards: CardInterface[];
   public steps: number;
@@ -74,7 +74,7 @@ export class FieldComponent {
         return;
       }
     });
-    if (!card.isOpened) {
+    if (!card.isOpened && !card.solved) {
       this.steps++;
       if (this.openedPair.length === 0 || this.openedPair.length === 2) { // first card opened or third
         this.openedPair = []; // reset pair
