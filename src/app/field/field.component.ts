@@ -27,6 +27,7 @@ export class FieldComponent {
   public init() {
     this.ws.showWinStats = false;
     this.steps = 0;
+    this.openedPair = [];
     this.stopwatch.stop();
     this.stopwatch.clear();
     this.syncStats();
