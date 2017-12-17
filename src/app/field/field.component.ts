@@ -9,7 +9,7 @@ import {WinStatsService} from '../services/win-stats.service';
   styleUrls: ['./field.component.sass'],
 })
 export class FieldComponent {
-  public cardsNumber = 4;
+  public cardsNumber = 12;
   public openedPair = [];
   public cards: CardInterface[];
   public steps: number;
